@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clubs — Student Learning Hub</title>
+
+  <!-- Embedded CSS (portal-style, matches mentorship theme) -->
+  <style>
+    :root {
+--primary-color: #080f5b;
+--accent-color: #6cb4ee;
+--card-bg: #ffffff;
+--text-dark: #111;
+--text-light: #fff;
+--tag-bg: #f1f3f6;
+--tag-accent: #48cae4;
+--hover-shadow: rgba(0,0,0,0.15);
+}
+
+    /* Reset + layout */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg,#f7fbff,#f5f7fa);
+      color:#0b1220;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* NAV */
+   .navbar {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 14px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* Logo + title */
+.usman {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nwis {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff10;
+  padding: 4px;
+}
+
+.usman span {
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--text-light);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 6px 0;
+}
+
+/* Underline hover + active */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Optional pill emphasis for one item, e.g. Peer Help */
+.nav-links a.highlight {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav-links a.highlight:hover {
+  background: var(--accent-color);
+  color: #02063a;
+}
+    /* PAGE WRAPPER */
+    .page {
+      max-width:1200px;
+      margin:28px auto;
+      padding:0 18px 60px;
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    /* HERO & SEARCH (top of left column on mobile) */
+    .clubs-hero{
+      grid-column:1/-1;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--primary-color),var(--accent-color));
+      color:white;
+      padding:36px;
+      box-shadow:0 12px 30px rgba(6,9,25,0.15);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:8px;
+    }
+    .clubs-hero h1{font-size:28px;margin:0}
+    .clubs-hero p{margin:0;color:rgba(255, 255, 255, 0.9)}
+
+    /* SIDEBAR (filters) */
+    .sidebar{
+      background: rgba(255,255,255,0.9);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:0 10px 28px rgba(6,9,25,0.06);
+      height:fit-content;
+      position:sticky;
+      top:96px;
+    }
+    .sidebar h4{margin:0 0 10px 0;font-size:15px;color:var(--primary)}
+    .control{margin-bottom:14px}
+    .control label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    .control select,.control input[type="checkbox"] + label{
+      font-size:14px;
+    }
+    .select, .search {
+      width:100%;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid #e6e9ef;
+      background:white;
+      font-size:14px;
+    }
+    .search{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .search input{
+      border:0;outline:none;font-size:14px;width:100%;
+    }
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{
+      padding:6px 10px;border-radius:999px;background: #6cb4ee;color:var(--primary);font-weight:600;font-size:13px;border:1px solid rgba(99,139,255,0.2);cursor:pointer}
+    .chip.active{background:var(--primary);color:white}
+
+    /* CLUB GRID (right column) */
+    .club-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:20px;
+    }
+
+    /* CLUB CARD (portal card) */
+    .club-card{
+      background:var(--card);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 8px 28px rgba(11,18,32,0.06);
+      transition:transform .22s ease,box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .club-card:hover{transform:translateY(-8px);box-shadow:0 18px 48px rgba(11,18,32,0.12)}
+
+    .club-media{
+      width:100%;height:140px;object-fit:cover;background:#ddd;
+    }
+    .club-body{padding:14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .club-name{font-size:1.05rem;color:var(--primary);font-weight:700;margin:0}
+    .club-desc{font-size:0.95rem;color:#374151;margin:0}
+    .meta-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+    .badge{font-size:12px;padding:6px 9px;border-radius:999px;background:#f3f5f7;color:#0b1220;font-weight:600}
+    .badge.blue{background:linear-gradient(90deg,var(--accent),var(--primary-2));color:white}
+    .spacer{flex:1}
+
+    .club-footer{display:flex;gap:10px;align-items:center;padding:12px 16px;border-top:1px solid #f3f4f6;background:#fff}
+    .join-btn{
+      background:linear-gradient(90deg,var(--accent),var(--primary-2));
+      color:white;padding:9px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;text-decoration:none}
+    .details-link{font-size:13px;color:var(--primary);text-decoration:none}
+
+    /* EMPTY state */
+    .empty{
+      grid-column:1/-1;
+      text-align:center;
+      color:var(--muted);
+      padding:40px 20px;
+      border-radius:12px;
+      background:linear-gradient(90deg, rgba(6,30,90,0.03), rgba(99,140,255,0.03));
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .page{grid-template-columns:1fr; padding:0 18px 60px}
+      .sidebar{position:relative;top:auto;margin-bottom:12px}
+      .clubs-hero{margin-bottom:12px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav class="navbar">
+      <div class="usman">
+        <h1 class="logo">Student Learning Hub</h1>
+        <img class="nwis" src="Screenshot_2025-12-05_193533-removebg-preview.png" alt="School logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="mentorship.html">Peer Help</a></li>
+        <li><a href="competitions.html">Competitions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE -->
+  <div class="page">
+
+    <!-- HERO (spans full width on top) -->
+    <section class="clubs-hero">
+      <h1>Find your club</h1>
+      <p>Search, filter and join any club that matches your interests and schedule.</p>
+    </section>
+
+    <!-- SIDEBAR / FILTERS -->
+    <aside class="sidebar" aria-label="Filters">
+      <div class="control">
+        <h4>Search</h4>
+        <div class="search" style="background:#fff;border-radius:10px;border:1px solid #e6e9ef;padding:8px 10px">
+          <svg width="16" height="16" viewBox="0 0 24 24" style="opacity:.6"><path fill="currentColor" d="M21 21l-4.35-4.35" /></svg>
+          <input id="searchInput" type="text" placeholder="Search clubs, tags, activities..." />
+        </div>
+      </div>
+
+      <div class="control">
+        <h4>Category</h4>
+        <select id="filterCategory" class="select" aria-label="Category filter">
+          <option value="">All categories</option>
+          <option>Academic</option>
+          <option>STEM</option>
+          <option>Creative</option>
+          <option>Sports</option>
+          <option>Community</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <h4>Meeting Day</h4>
+        <select id="filterDay" class="select" aria-label="Meeting day filter">
+          <option value="">Any day</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <h4>Commitment</h4>
+        <div class="chip-row">
+          <div class="chip" data-difficulty="">All</div>
+          <div class="chip" data-difficulty="Low">Low</div>
+          <div class="chip" data-difficulty="Medium">Medium</div>
+          <div class="chip" data-difficulty="High">High</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CLUB GRID -->
+    <main>
+      <section class="club-grid" id="clubGrid">
+
+        <!-- CLUB: AI & Coding -->
+        <article class="club-card" data-name="AI and Coding Club"
+                 data-category="STEM" data-day="Thursday" data-difficulty="High"
+                 data-tags="coding ai programming robotics">
+          <img class="club-media" src="aiandcodingclub.png" alt="AI & Coding">
+          <div class="club-body">
+            <h3 class="club-name">AI & Coding Club</h3>
+            <p class="club-desc">Weekly coding labs and AI projects — build apps, bots and prototype ideas with peers.</p>
+            <div class="meta-row">
+              <div class="badge">Thursday</div>
+              <div class="badge">STEM</div>
+              <div class="badge">High</div>
+              <div class="spacer"></div>
+            </div>
+          </div>
+          <div class="club-footer">
+            <a class="details-link" href="aiandcodingclub.html">Details</a>
+            <a class="join-btn" href="#">Join</a>
+          </div>
+        </article>
+
+        <!-- CLUB: Public Speaking -->
+        <article class="club-card" data-name="Public Speaking Club"
+                 data-category="Academic" data-day="Monday" data-difficulty="Medium"
+                 data-tags="speaking debating mun public-speaking">
+          <img class="club-media" src="Screenshot 2025-12-08 120437.png" alt="Public Speaking">
+          <div class="club-body">
+            <h3 class="club-name">Public Speaking Club</h3>
+            <p class="club-desc">Practice speeches, short talks and debates — perfect for MUN and assemblies.</p>
+            <div class="meta-row">
+              <div class="badge">Monday</div>
+              <div class="badge">Academic</div>
+              <div class="badge">Medium</div>
+              <div class="spacer"></div>
+            </div>
+          </div>
+          <div class="club-footer">
+            <a class="details-link" href="publicspeakingclub.html">Details</a>
+            <a class="join-btn" href="publicspeakingclub.html">Join</a>
+          </div>
+        </article>
+
+        <!-- CLUB: Research Club -->
+        <article class="club-card" data-name="Research Club"
+                 data-category="Academic" data-day="Wednesday" data-difficulty="Medium"
+                 data-tags="research science lab papers">
+          <img class="club-media" src="researchclub.png" alt="Research">
+          <div class="club-body">
+            <h3 class="club-name">Research Club</h3>
+            <p class="club-desc">Collaborate on mini research projects, learn study design and present findings.</p>
+            <div class="meta-row">
+              <div class="badge">Wednesday</div>
+              <div class="badge">Academic</div>
+              <div class="badge">Medium</div>
+              <div class="spacer"></div>
+            </div>
+          </div>
+          <div class="club-footer">
+            <a class="details-link" href="#">Details</a>
+            <a class="join-btn" href="#">Join</a>
+          </div>
+        </article>
+
+        <!-- CLUB: Arts Club -->
+        <article class="club-card" data-name="Arts Club"
+                 data-category="Creative" data-day="Tuesday" data-difficulty="Low"
+                 data-tags="art drawing painting design">
+          <img class="club-media" src="club_arts.jpg" alt="Arts">
+          <div class="club-body">
+            <h3 class="club-name">Arts Club</h3>
+            <p class="club-desc">Open studio sessions for painting, digital art, and collaborative school murals.</p>
+            <div class="meta-row">
+              <div class="badge">Tuesday</div>
+              <div class="badge">Creative</div>
+              <div class="badge">Low</div>
+              <div class="spacer"></div>
+            </div>
+          </div>
+          <div class="club-footer">
+            <a class="details-link" href="#">Details</a>
+            <a class="join-btn" href="#">Join</a>
+          </div>
+        </article>
+
+        <!-- CLUB: Sports Club -->
+        <article class="club-card" data-name="Sports Club"
+                 data-category="Sports" data-day="Sunday" data-difficulty="Medium"
+                 data-tags="sports fitness football basketball tennis">
+          <img class="club-media" src="club_sports.jpg" alt="Sports">
+          <div class="club-body">
+            <h3 class="club-name">Sports Club</h3>
+            <p class="club-desc">Team practices and friendly tournaments — open to all skill levels.</p>
+            <div class="meta-row">
+              <div class="badge">Sunday</div>
+              <div class="badge">Sports</div>
+              <div class="badge">Medium</div>
+              <div class="spacer"></div>
+            </div>
+          </div>
+          <div class="club-footer">
+            <a class="details-link" href="#">Details</a>
+            <a class="join-btn" href="#">Join</a>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- empty state (shown when no clubs match) -->
+      <div id="emptyMessage" class="empty" style="display:none">
+        No clubs found. Try removing filters or search terms.
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:linear-gradient(90deg,var(--primary),var(--primary-2));color:white;padding:20px;text-align:center;">
+    © 2025 Student Learning Hub — Created by Students, For Students
+  </footer>
+
+  <!-- JS: filtering + search + chips -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const filterCategory = document.getElementById('filterCategory');
+    const filterDay = document.getElementById('filterDay');
+    const chips = document.querySelectorAll('.chip');
+    const clubGrid = document.getElementById('clubGrid');
+    const clubs = Array.from(document.querySelectorAll('.club-card'));
+    const emptyMessage = document.getElementById('emptyMessage');
+
+    let activeDifficulty = '';
+
+    // chip toggles
+    chips.forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        // "All" chip resets
+        if(chip.dataset.difficulty === ''){
+          activeDifficulty = '';
+          chips.forEach(c=>c.classList.remove('active'));
+          chip.classList.add('active');
+        } else {
+          // toggle active state
+          if(chip.classList.contains('active')){
+            chip.classList.remove('active');
+            activeDifficulty = '';
+            document.querySelector('.chip[data-difficulty=""]').classList.add('active');
+          } else {
+            chips.forEach(c=>c.classList.remove('active'));
+            chip.classList.add('active');
+            activeDifficulty = chip.dataset.difficulty;
+          }
+        }
+        applyFilters();
+      });
+    });
+
+    // initial select All
+    document.querySelector('.chip[data-difficulty=""]').classList.add('active');
+
+    // filter function
+    function applyFilters(){
+      const q = searchInput.value.trim().toLowerCase();
+      const category = filterCategory.value;
+      const day = filterDay.value;
+
+      let visibleCount = 0;
+
+      clubs.forEach(card=>{
+        const name = (card.dataset.name||'').toLowerCase();
+        const tags = (card.dataset.tags||'').toLowerCase();
+        const cat = (card.dataset.category||'');
+        const d = (card.dataset.day||'');
+        const diff = (card.dataset.difficulty||'');
+
+        const matchesQuery = !q || name.includes(q) || tags.includes(q) || (card.querySelector('.club-desc') && card.querySelector('.club-desc').textContent.toLowerCase().includes(q));
+        const matchesCategory = !category || cat === category;
+        const matchesDay = !day || d === day;
+        const matchesDifficulty = !activeDifficulty || diff === activeDifficulty;
+
+        if(matchesQuery && matchesCategory && matchesDay && matchesDifficulty){
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      emptyMessage.style.display = visibleCount ? 'none' : '';
+    }
+
+    // events
+    [searchInput, filterCategory, filterDay].forEach(el=>el.addEventListener('input', applyFilters));
+    // also apply filters initially
+    applyFilters();
+
+    // accessible keyboard: press Enter in search to focus grid
+    searchInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ applyFilters(); clubGrid.scrollIntoView({behavior:'smooth'}); } });
+  </script>
+</body>
+</html>

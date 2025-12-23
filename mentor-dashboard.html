@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f5f7fa;
+      font-family: Inter, sans-serif;
+    }
+
+    .topbar {
+      background: #080f5b;
+      color: white;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .logout-btn {
+      background: #ff5f5f;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .dashboard-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #080f5b;
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    /* Slot section */
+    #slotInput {
+      padding: 10px;
+      width: 60%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    #addSlotBtn {
+      padding: 10px 16px;
+      background: #080f5b;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .slot-list {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .slot-item {
+      background: #e8f0ff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .delete-slot {
+      background: #ff4d4d;
+      padding: 4px 6px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #080f5b;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+  <span id="mentorName">Mentor Dashboard</span>
+  <button class="logout-btn" id="logoutBtn">Logout</button>
+</div>
+
+<div class="dashboard-container">
+  
+  <h2 class="section-title">Your Availability</h2>
+  <input type="datetime-local" id="slotInput">
+  <button id="addSlotBtn">Add Slot</button>
+  <div id="slotList" class="slot-list"></div>
+
+  <h2 class="section-title">Upcoming Bookings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Email</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="bookingsTable"></tbody>
+  </table>
+
+</div>
+
+<script type="module" src="mentor-dashboard.js"></script>
+
+</body>
+</html>

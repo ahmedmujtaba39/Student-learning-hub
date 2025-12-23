@@ -1,0 +1,273 @@
+/* ------------------------------------------------ */
+/* CLUBS PAGE STYLES (Matches Mentorship Theme)     */
+/* ------------------------------------------------ */
+
+:root {
+  --primary-color: #080f5b;
+  --primary-gradient: linear-gradient(135deg, #080f5b, #3a0ca3);
+  --accent-color: #6cb4ee;
+  --accent-gradient: linear-gradient(135deg, #6cb4ee, #48cae4);
+  --bg-light: #f5f7fa;
+  --bg-white: #ffffff;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+}
+
+/* =======================
+      GENERAL
+======================= */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+}
+
+a {
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+/* =======================
+      NAVBAR
+======================= */
+.navbar {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 14px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* Logo + title */
+.usman {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nwis {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff10;
+  padding: 4px;
+}
+
+.usman span {
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--text-light);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 6px 0;
+}
+
+/* Underline hover + active */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Optional pill emphasis for one item, e.g. Peer Help */
+.nav-links a.highlight {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav-links a.highlight:hover {
+  background: var(--accent-color);
+  color: #02063a;
+}
+
+/* =======================
+      HERO
+======================= */
+.hero {
+  height: 60vh;
+  background: url("ff5efc1237e8aa5d864406332752ec40.jpeg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero h1 {
+  position: relative;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ffd6ff, #6cb4ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  position: relative;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* =======================
+      CLUB GRID
+======================= */
+.clubs-container {
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* =======================
+      CLUB CARD
+======================= */
+.club-card {
+  background: var(--bg-white);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease;
+}
+
+.club-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* top gradient bar */
+.club-card::before {
+  content: "";
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, #6cb4ee, #080f5b);
+}
+
+/* text styles */
+.club-card h3 {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #080f5b;
+}
+
+.club-card p {
+  margin: 10px 0;
+  line-height: 1.4rem;
+  color: #444;
+}
+
+/* TAGS */
+.tags {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: var(--accent-color);
+  color: var(--text-light);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* BUTTON */
+.club-card .btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 20px;
+  background: var(--accent-gradient);
+  color: white;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.club-card .btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* =======================
+      FOOTER
+======================= */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* =======================
+      ANIMATIONS
+======================= */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

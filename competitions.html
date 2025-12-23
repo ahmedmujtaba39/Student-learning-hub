@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NWIS shines at DAMMUN | Student Learning Hub</title>
+  <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+
+  <!-- Same navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="usman">
+        <h1 class="logo">Student Learning Hub</h1>
+        <img class="nwis" src="Screenshot_2025-12-05_193533-removebg-preview.png" alt="School logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="mentorship.html">Peer Help</a></li>
+        <li><a href="competitions.html">Competitions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="competitions-hero">
+    <h1>Upcoming Competitions & Events</h1>
+    <p>Find opportunities to represent your school, build confidence, and compete with the best.</p>
+
+    <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Search competitions…">
+        <button>🔍</button>
+    </div>
+
+    <div class="filter-row">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">MUN</button>
+        <button class="filter-btn">STEM</button>
+        <button class="filter-btn">Leadership</button>
+        <button class="filter-btn">Online</button>
+        <button class="filter-btn">This Month</button>
+    </div>
+</section>
+
+<!-- FEATURED COMPETITION -->
+<section class="featured-section">
+    <div class="featured-card">
+        <div class="featured-header">★ Featured Competition</div>
+        <div class="featured-body">
+            <p class="featured-date">March 15, 2025</p>
+            <h2>International Debate Showcase</h2>
+            <p class="featured-desc">
+                A global competition bringing together top debaters to challenge their diplomacy, research, and public speaking skills.
+            </p>
+            <a href="#" class="featured-btn">Register Now →</a>
+        </div>
+    </div>
+</section>
+
+<!-- COMPETITIONS GRID -->
+<section class="competitions-grid">
+
+    <!-- POVMUN -->
+    <div class="comp-card" data-category="mun" data-difficulty="easy" data-title="POVMUN">
+        <img src="POVMUN.png" class="comp-img">
+        <div class="comp-body">
+            <h3>POVMUN</h3>
+            <p class="comp-desc">A premium Model UN experience focusing on diplomacy and leadership.</p>
+
+            <div class="tags">
+                <span class="tag blue">MUN</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Medium</span>
+            </div>
+
+            <div class="comp-footer">
+                <span class="deadline">Deadline: Feb 10</span>
+                <a href="https://linktr.ee/povmun?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnn4r2NhTDBwe2ynijkh1I1wRXZm2ibI_RN3Qmofcdzq7DLVyCDMkRPRDMYLA_aem_jGMP3R2s7dYb9eKfxfrVrA" class="register-btn">Register →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- REIMUN -->
+    <div class="comp-card" data-category="mun" data-difficulty="hard" data-title="REIMUN">
+        <img src="REIMUN.png" class="comp-img">
+        <div class="comp-body">
+            <h3>REIMUN</h3>
+            <p class="comp-desc">A large-scale MUN event known for high-quality committees and dynamic debates.</p>
+
+            <div class="tags">
+                <span class="tag blue">MUN</span>
+                <span class="tag">Debate</span>
+                <span class="tag">Hard</span>
+            </div>
+
+            <div class="comp-footer">
+                <span class="deadline">Deadline: March 1</span>
+                <a href="https://reimun.com/" class="register-btn">Register →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENMUN -->
+    <div class="comp-card"data-category="mun" 
+     data-difficulty="medium" 
+     data-title="GENMUN">>
+        <img src="GENMUN.png" class="comp-img">
+        <div class="comp-body">
+            <h3>GENMUN</h3>
+            <p class="comp-desc">A modern MUN conference focusing on real-world problem-solving.</p>
+
+            <div class="tags">
+                <span class="tag blue">MUN</span>
+                <span class="tag">Academic</span>
+                <span class="tag">Easy</span>
+            </div>
+
+            <div class="comp-footer">
+                <span class="deadline">Deadline: Dec 16</span>
+                <a href="https://linktr.ee/genmunsa?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnnCNU2NPuJb_ujf9CEjJIiPGjLR1u9CfwiT2l_i0kMbNH5Qe94hE2SkCFAKA_aem_gHP5Zly_NEq3Z9dx0iyHJA" class="register-btn">Register →</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".comp-card");
+
+    let activeCategory = "all";
+
+    // =============================
+    // FILTER FUNCTION
+    // =============================
+    function filterCompetitions() {
+        const searchText = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+            const title = card.dataset.title.toLowerCase();
+            const category = card.dataset.category.toLowerCase();
+
+            const matchesSearch = title.includes(searchText);
+            const matchesCategory = (activeCategory === "all") || (category === activeCategory);
+
+            if (matchesSearch && matchesCategory) {
+                card.style.display = "block";
+                card.style.opacity = 1;
+            } else {
+                card.style.opacity = 0;
+                setTimeout(() => (card.style.display = "none"), 200);
+            }
+        });
+    }
+
+    // =============================
+    // SEARCH EVENT
+    // =============================
+    searchInput.addEventListener("input", filterCompetitions);
+
+    // =============================
+    // CATEGORY BUTTONS
+    // =============================
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            // Remove active styling
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            activeCategory = btn.dataset.filter.toLowerCase();
+
+            filterCompetitions();
+        });
+    });
+
+});
+</script>
+
+
+  <!-- Same footer -->
+  <footer class="footer">
+    <p>© 2025 Student Learning Hub — Created by Students, For Students</p>
+  </footer>
+</body>
+</html>
