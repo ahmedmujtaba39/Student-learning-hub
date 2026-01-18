@@ -189,6 +189,8 @@
     <div class="events-footer">
         <a href="competitions.html" class="events-all">SEE ALL EVENTS →</a>
     </div>
+
+      
 </section>
 
 <script>
@@ -210,23 +212,20 @@
 
 
  
-document.getElementById("hamburger").onclick = () => {
-  document.querySelector(".nav-links").classList.toggle("show");
-};
-const announcementOverlay = document.getElementById("announcementOverlay");
-const closeAnnouncement = document.getElementById("closeAnnouncement");
+  const popup = document.getElementById("popupOverlay");
+  const closeBtn = document.getElementById("closePopup");
 
-closeAnnouncement.onclick = () => {
-  announcementOverlay.style.display = "none";
-};
+  // Close when X is clicked
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
 
-// Optional: close when clicking outside
-announcementOverlay.onclick = (e) => {
-  if (e.target === announcementOverlay) {
-    announcementOverlay.style.display = "none";
-  }
-};
-
+  // Close when clicking outside the popup box (mobile-friendly)
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
+    }
+  });
 
     
 </script>
@@ -248,9 +247,12 @@ announcementOverlay.onclick = (e) => {
 
     <div class="announcement-overlay" id="announcementOverlay">
   <div class="announcement-modal">
-
-    <button class="announcement-close" id="closeAnnouncement">✕</button>
-
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <button class="popup-close" id="closePopup">×</button>
+    <!-- popup content -->
+  </div>
+</div>
     <h2>School Model United Nations</h2>
 
     <p>
@@ -269,6 +271,7 @@ announcementOverlay.onclick = (e) => {
   </div>
 </div>
 </html>
+
 
 
 
