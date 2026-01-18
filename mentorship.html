@@ -20,6 +20,7 @@
         <li><a href="competitions.html">Competitions</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="hamburger" id="hamburger">☰</div>
 </nav>
 
 <!-- HERO -->
@@ -379,6 +380,12 @@ confirmBtn.addEventListener("click", async () => {
   }
 });
 
+  
+document.getElementById("hamburger").onclick = () => {
+  document.querySelector(".nav-links").classList.toggle("show");
+};
+
+
 </script>
 
 
@@ -392,6 +399,7 @@ confirmBtn.addEventListener("click", async () => {
 <footer class="footer">
     <p style="text-align:center" class="'textfooter">© 2025 Student Learning Hub — Created by Students, For Students</p>
 </footer>
+
 
 
 
