@@ -213,7 +213,19 @@
 document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
 };
+const announcementOverlay = document.getElementById("announcementOverlay");
+const closeAnnouncement = document.getElementById("closeAnnouncement");
 
+closeAnnouncement.onclick = () => {
+  announcementOverlay.style.display = "none";
+};
+
+// Optional: close when clicking outside
+announcementOverlay.onclick = (e) => {
+  if (e.target === announcementOverlay) {
+    announcementOverlay.style.display = "none";
+  }
+};
 
 
     
@@ -230,7 +242,11 @@ document.getElementById("hamburger").onclick = () => {
 </footer>
 
     <!-- ================= MUN ANNOUNCEMENT POPUP ================= -->
-<div class="announcement-overlay" id="announcementOverlay">
+
+
+</body>
+
+    <div class="announcement-overlay" id="announcementOverlay">
   <div class="announcement-modal">
 
     <button class="announcement-close" id="closeAnnouncement">✕</button>
@@ -253,9 +269,8 @@ document.getElementById("hamburger").onclick = () => {
 
   </div>
 </div>
-
-</body>
 </html>
+
 
 
 
