@@ -25,6 +25,7 @@
     <li><a href="competitions.html">Competitions</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <div class="hamburger" id='hamburger">☰</div>
 </nav>
 
 <!-- ================= PAGE HEADER ================= -->
@@ -183,9 +184,14 @@
 <footer class="footer">
   <p>© 2025 Student Learning Hub — Created by Students, For Students</p>
 </footer>
-
+<script>
+document.getElementById("hamburger").onclick = () => {
+  document.querySelector(".nav-links").classList.toggle("show");
+};
+</script>
 </body>
 </html>
+
 
 
 
