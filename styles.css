@@ -46,6 +46,9 @@ a {
   align-items: center;
   gap: 14px;
 }
+.hamburger {
+  display:none;
+}
 
 .nwis {
   width: 46px;
@@ -474,7 +477,33 @@ a {
 .feature-btn:hover {
   color: #ffd6ff;
 }
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+  }
 
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #080f5b;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 14px 20px;
+    width: 100%;
+  }
+}
 /* =======================
    FOOTER
 ======================= */
@@ -500,3 +529,4 @@ a {
     transform: translateY(0);
   }
 }
+
