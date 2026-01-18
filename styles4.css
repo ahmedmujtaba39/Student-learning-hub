@@ -309,3 +309,90 @@ body {
   text-decoration: none;
 }
 
+  MOBILE NAVBAR FIX (ALL-IN-ONE)
+   =============================== */
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* NAVBAR CONTAINER */
+  .navbar {
+    position: relative;
+    padding: 14px 18px;
+    height: 64px;
+  }
+
+  /* LOGO */
+  .logo {
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .usman {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100;
+  }
+
+  /* NAV LINKS (HIDDEN BY DEFAULT) */
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: #080f5b;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 12px 0;
+    z-index: 1000;
+    animation: slideDown 0.25s ease-out;
+  }
+
+  /* SHOW MENU WHEN ACTIVE */
+  .nav-links.show {
+    display: flex;
+  }
+
+  /* NAV ITEMS */
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 10px 0;
+    font-size: 16px;
+  }
+}
+
+/* SLIDE ANIMATION */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
