@@ -585,92 +585,104 @@ a {
 
 /* ================= ANNOUNCEMENT POPUP ================= */
 
-.announcement-overlay {
+/* ================= POPUP OVERLAY ================= */
+.popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  padding: 16px; /* mobile spacing */
 }
 
-.announcement-modal {
-  background: white;
-  width: 90%;
-  max-width: 480px;
-  padding: 26px 24px 28px;
-  border-radius: 16px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+/* ================= POPUP BOX ================= */
+.popup-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  padding: 28px 24px 24px;
   position: relative;
-  text-align: center;
-  animation: fadeInScale 0.25s ease;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: popupSlideUp 0.35s ease;
 }
 
-.announcement-modal h2 {
-  margin-top: 0;
-  color: #080f5b;
-  font-size: 1.6rem;
-}
-
-.announcement-modal p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 10px 0;
-}
-
-.announcement-btn {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 12px 22px;
-  background: #080f5b;
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Close button */
-.announcement-close {
+/* ================= CLOSE BUTTON ================= */
+.popup-close {
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: 14px;
-  border: none;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  font-size: 18px;
+  border: none;
+  background: #f1f3f6;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Mobile tweaks */
-@media (max-width: 768px) {
-  .announcement-modal {
-    width: 94%;
-    padding: 22px 18px 24px;
-  }
-
-  .announcement-modal h2 {
-    font-size: 1.4rem;
-  }
-
-  .announcement-btn {
-    width: 100%;
-    min-height: 44px;
-  }
+.popup-close:hover {
+  background: #e5e7eb;
 }
 
-/* Animation */
-@keyframes fadeInScale {
+/* ================= POPUP TEXT ================= */
+.popup-box h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 22px;
+  color: #080f5b;
+  text-align: center;
+}
+
+.popup-box p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ================= META INFO ================= */
+.popup-meta {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #111827;
+}
+
+.popup-meta strong {
+  color: #080f5b;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes popupSlideUp {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(20px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
+/* ================= MOBILE TWEAKS ================= */
+@media (max-width: 480px) {
+  .popup-box {
+    padding: 22px 18px;
+  }
+
+  .popup-box h2 {
+    font-size: 20px;
+  }
+
+  .popup-box p {
+    font-size: 14px;
+  }
+}
