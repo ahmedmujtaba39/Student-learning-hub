@@ -485,3 +485,109 @@ a {
   }
 }
 
+
+
+/* ================= RESEARCH DOCUMENTS ================= */
+.research-documents {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #475569;
+  margin-bottom: 32px;
+}
+
+/* ================= FILTERS ================= */
+.research-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.research-filters input,
+.research-filters select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+/* ================= GRID ================= */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ================= CARD ================= */
+.research-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.research-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+}
+
+.research-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #1e3a8a;
+}
+
+.research-meta {
+  font-size: 14px;
+  color: #475569;
+  margin: 14px 0;
+}
+
+/* ================= ACTIONS ================= */
+.research-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.research-actions a {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  background: #1e3a8a;
+  color: white;
+}
+
+.research-actions a:last-child {
+  background: #475569;
+}
+
+.research-actions a:hover {
+  opacity: 0.9;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 26px;
+  }
+}
+
+
