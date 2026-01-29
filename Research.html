@@ -175,7 +175,38 @@ document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
 
 
-  <script>
+const search = document.getElementById("searchResearch");
+const topic = document.getElementById("filterTopic");
+const year = document.getElementById("filterYear");
+const cards = document.querySelectorAll(".research-card");
+
+function filterResearch() {
+  const q = search.value.toLowerCase();
+  const t = topic.value;
+  const y = year.value;
+
+  cards.forEach(card => {
+    const title = card.dataset.title.toLowerCase();
+    const author = card.dataset.author.toLowerCase();
+    const cardTopic = card.dataset.topic;
+    const cardYear = card.dataset.year;
+
+    const matchSearch = title.includes(q) || author.includes(q);
+    const matchTopic = !t || cardTopic === t;
+    const matchYear = !y || cardYear === y;
+
+    card.style.display = matchSearch && matchTopic && matchYear ? "" : "none";
+  });
+}
+
+search.addEventListener("input", filterResearch);
+topic.addEventListener("change", filterResearch);
+year.addEventListener("change", filterResearch);
+
+
+
+
+  
 document.querySelectorAll(".copy-email, .copy-phone").forEach(el => {
   el.addEventListener("click", () => {
     const text = el.textContent.trim();
@@ -191,9 +222,7 @@ document.querySelectorAll(".copy-email, .copy-phone").forEach(el => {
     }, 1200);
   });
 });
-</script>
 
-};
 </script>
 </html>
 
