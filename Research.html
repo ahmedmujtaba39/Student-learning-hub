@@ -101,6 +101,26 @@
 <script>
 document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
+
+
+  <script>
+document.querySelectorAll(".copy-email, .copy-phone").forEach(el => {
+  el.addEventListener("click", () => {
+    const text = el.textContent.trim();
+    navigator.clipboard.writeText(text);
+
+    const original = el.textContent;
+    el.textContent = "Copied!";
+    el.style.color = "#16a34a";
+
+    setTimeout(() => {
+      el.textContent = original;
+      el.style.color = "";
+    }, 1200);
+  });
+});
+</script>
+
 };
 </script>
 </html>
