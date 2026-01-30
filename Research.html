@@ -52,7 +52,7 @@
             <ul>
                 <li><strong>Meeting Day:</strong> Wednesday</li>
                 <li><strong>Time:</strong> During break</li>
-                <li><strong>Location:</strong>12-C</li>
+                <li><strong>Location:</strong>12-B</li>
                 <li><strong>Club Leader:</strong> Yazan Eyad</li>
             </ul>
         </div>
@@ -62,7 +62,7 @@
             <h2>What We Do</h2>
             <ul>
               <li> Intro to what research is</li>
-              <li>Designing simple surveys<li>
+              <li>Designing simple surveys</li>
               <li>Collecting data from classmates</li>
               <li>Checking correlations (e.g., books read vs English marks)</li>
             </ul>
@@ -70,97 +70,89 @@
 
                 
       <section class="featured-member">
+  <h2>Featured Member</h2>
   <div class="featured-card">
 
-    <img src="research.png" alt="Featured Member" class="featured-photo">
+    <img src="yazan.png" alt="Featured Member" class="featured-photo">
 
     <div class="featured-info">
-      <div class="featured-role">President</div>
+      <div class="featured-role">President at the research club</div>
       <div class="featured-name">Yazen Eyad</div>
 
       <div class="featured-contact">
-        <a href="mailto:aisha@nwis.edu.sa">aisha@nwis.edu.sa</a>
-        <span>+966 50 000 0000</span>
+        <a href="mailto:a0534416748@gmail.com">a0534416748@gmail.com</a>
+        <span>+966 53 441 6748</span>
       </div>
     </div>
 
   </div>
 </section>
 
-      <section class="research-documents">
 
-  <h2 class="section-title">Student Research Papers</h2>
-  <p class="section-subtitle">
-    Original research conducted by members of the Research Club.
+<section class="club-info-box">
+  <h3>Who Can Join?</h3>
+  <p>
+    The Research Club is open to all students who are curious, motivated, and
+    interested in exploring academic research. No prior research experience is
+    required — members are guided step by step through the research process and
+    supported throughout their projects.
   </p>
-
-  <!-- FILTERS -->
-  <div class="research-filters">
-    <input type="text" id="searchResearch" placeholder="Search by title or author">
-
-    <select id="filterTopic">
-      <option value="">All Topics</option>
-      <option value="AI">AI</option>
-      <option value="Biology">Biology</option>
-      <option value="Economics">Economics</option>
-      <option value="Physics">Physics</option>
-    </select>
-
-    <select id="filterYear">
-      <option value="">All Years</option>
-      <option value="2025">2025</option>
-      <option value="2024">2024</option>
-    </select>
-  </div>
-
-  <!-- DOCUMENT GRID -->
-  <div class="research-grid">
-
-    <!-- DOCUMENT CARD -->
-    <div class="research-card"
-         data-title="AI in Education"
-         data-author="Yazen Eyad"
-         data-topic="AI"
-         data-year="2025">
-
-      <h3>AI in Education</h3>
-      <p class="research-meta">
-        <strong>Author:</strong> Yazen Eyad<br>
-        <strong>Topic:</strong> Artificial Intelligence<br>
-        <strong>Year:</strong> 2025
-      </p>
-
-      <div class="research-actions">
-        <a href="docs/ai-education.pdf" target="_blank">View</a>
-        <a href="R1001 Detailed Report.pdf" download>Download</a>
-      </div>
-    </div>
-
-    <div class="research-card"
-         data-title="Economic Inequality"
-         data-author="Ahmed Khan"
-         data-topic="Economics"
-         data-year="2024">
-
-      <h3>Economic Inequality</h3>
-      <p class="research-meta">
-        <strong>Author:</strong> Ahmed Khan<br>
-        <strong>Topic:</strong> Economics<br>
-        <strong>Year:</strong> 2024
-      </p>
-
-      <div class="research-actions">
-        <a href="docs/economic-inequality.pdf" target="_blank">View</a>
-        <a href="R1001 Detailed Report.pdf" download>Download</a>
-      </div>
-    </div>
-
-  </div>
 </section>
 
+<section class="research-documents">
+
+  <!-- DOCUMENT CARD -->
+  <div class="research-doc">
+    <img src="researchcover.png" alt="Research Paper Cover">
+
+    <div class="doc-actions">
+      <button class="view-btn" data-pdf="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\R1001 Detailed Report.pdf">
+        View Document
+      </button>
+      <a href="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\R1001 Detailed Report.pdf" download>Download</a>
+    </div>
+  </div>
+
+  <div class="research-doc">
+    <img src="png.png" alt="Research Paper Cover">
+
+    <div class="doc-actions">
+      <button class="view-btn" data-pdf="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\Detailed R3001.pdf">
+        View Document
+      </button>
+      <a href="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\Detailed R3001.pdf" download>Download</a>
+    </div>
+  </div>
+
+  <div class="research-doc">
+    <img src="r3.png" alt="Research Paper Cover">
+
+    <div class="doc-actions">
+      <button class="view-btn" data-pdf="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\R4001 Detailed Report (1).pdf">
+        View Document
+      </button>
+      <a href="C:\Users\cp\Downloads\Student-learning-hub-main\Student-learning-hub-main\R4001 Detailed Report (1).pdf" download>Download</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= PDF VIEWER MODAL ================= -->
+<div class="pdf-overlay" id="pdfOverlay">
+  <div class="pdf-box">
+    <button class="pdf-close" id="closePdf">×</button>
+    <iframe id="pdfFrame"></iframe>
+  </div>
+</div>
 
 
-        <!-- JOIN -->
+     
+  
+
+
+
+
+       
         <div class="join-section">
             <a href="#" class="join-btn">Join the Club</a>
         </div>
@@ -173,35 +165,33 @@
 <script>
 document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
-
-
-const search = document.getElementById("searchResearch");
-const topic = document.getElementById("filterTopic");
-const year = document.getElementById("filterYear");
-const cards = document.querySelectorAll(".research-card");
-
-function filterResearch() {
-  const q = search.value.toLowerCase();
-  const t = topic.value;
-  const y = year.value;
-
-  cards.forEach(card => {
-    const title = card.dataset.title.toLowerCase();
-    const author = card.dataset.author.toLowerCase();
-    const cardTopic = card.dataset.topic;
-    const cardYear = card.dataset.year;
-
-    const matchSearch = title.includes(q) || author.includes(q);
-    const matchTopic = !t || cardTopic === t;
-    const matchYear = !y || cardYear === y;
-
-    card.style.display = matchSearch && matchTopic && matchYear ? "" : "none";
-  });
 }
 
-search.addEventListener("input", filterResearch);
-topic.addEventListener("change", filterResearch);
-year.addEventListener("change", filterResearch);
+
+
+const overlay = document.getElementById("pdfOverlay");
+const frame = document.getElementById("pdfFrame");
+const closeBtn = document.getElementById("closePdf");
+
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    frame.src = btn.dataset.pdf;
+    overlay.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  frame.src = "";
+  overlay.style.display = "none";
+});
+
+overlay.addEventListener("click", e => {
+  if (e.target === overlay) {
+    frame.src = "";
+    overlay.style.display = "none";
+  }
+});
+
 
 
 
