@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<nav class="navbar">
+    
+         <div class="usman">
+        <h1 class="logo">Student Learning Hub</h1>
+        <img class="nwis" src="nwislogo" alt="School logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="mentorship.html" class="active">Peer Help</a></li>
+        <li><a href="competitions.html">Competitions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">☰</div>
+</nav>
+  <title>Join a Club — Student Learning Hub</title>
+
+  <!-- Your main stylesheet -->
+
+
+  <!-- Page-specific styles -->
+  <style>
+    /* =====================
+   ROOT VARIABLES
+===================== */
+:root {
+  --primary: #080f5b;
+  --accent: #6cb4ee;
+  --bg: #f6f8fc;
+  --card: #ffffff;
+  --text-dark: #0b1220;
+  --text-light: #ffffff;
+  --muted: #6b7280;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* =====================
+   RESET & BASE
+===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg,#f7fbff,#f5f7fa);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+  background: var(--primary);
+  color: var(--text-light);
+  padding: 14px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+/* Logo + title */
+.usman {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nwis {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: rgba(255,255,255,0.15);
+  padding: 4px;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-light);
+  padding: 6px 0;
+  transition: color 0.25s ease;
+}
+
+/* Hover underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+/* =====================
+   MOBILE NAV
+===================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 18px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: var(--primary);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 12px 0;
+    animation: slideDown 0.25s ease-out;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   HERO (DEFAULT)
+===================== */
+.hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 18px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.95;
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: white;
+  color: var(--primary);
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section {
+  padding: 70px 18px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  background: linear-gradient(90deg, var(--primary), #02063a);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* =====================
+   FORMS (GLOBAL)
+===================== */
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* =====================
+   UTILITIES
+===================== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+.signup-hero {
+      padding: 60px 18px 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #080f5b, #6cb4ee);
+      color: white;
+    }
+
+    .signup-hero h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin: 0;
+    }
+
+    .signup-hero p {
+      max-width: 600px;
+      margin: 12px auto 0;
+      opacity: 0.95;
+      font-size: 16px;
+    }
+
+    .signup-wrapper {
+      max-width: 520px;
+      margin: -40px auto 70px;
+      padding: 0 18px;
+    }
+
+    .signup-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 20px 45px rgba(11,18,32,0.15);
+    }
+
+    .signup-card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #080f5b;
+      font-size: 22px;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .signup-form label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .signup-form input,
+    .signup-form select,
+    .signup-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    .signup-form input:focus,
+    .signup-form select:focus,
+    .signup-form textarea:focus {
+      outline: none;
+      border-color: #6cb4ee;
+      box-shadow: 0 0 0 3px rgba(108,180,238,0.25);
+    }
+
+    .signup-form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .signup-btn {
+      margin-top: 6px;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(90deg, #080f5b, #6cb4ee);
+      color: white;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(8,15,91,0.25);
+    }
+
+    #status {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .signup-card {
+        padding: 22px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (same as your site) -->
+
+  <!-- HERO -->
+  <section class="signup-hero">
+    <h2>Join a Club</h2>
+    <p>Apply to be part of a student-led club and get involved in your school community.</p>
+  </section>
+
+  <!-- FORM -->
+  <div class="signup-wrapper">
+    <div class="signup-card">
+      <h3>Signup Form</h3>
+
+      <form class="signup-form" id="joinForm">
+        <div>
+          <label>Full Name</label>
+          <input required>
+        </div>
+
+        <div>
+          <label>School Email</label>
+          <input type="email" required>
+        </div>
+
+        <div>
+          <label>Grade</label>
+          <select required>
+            <option value="">Select grade</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Club</label>
+          <input id="clubInput" readonly>
+        </div>
+
+        <div>
+          <label>Why do you want to join?</label>
+          <textarea placeholder="Optional message"></textarea>
+        </div>
+
+        <button class="signup-btn" type="submit">
+          Submit Application
+        </button>
+
+        <p id="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Student Learning Hub — Created by Students, For Students</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // hamburger
+    document.getElementById("hamburger").onclick = () => {
+      document.querySelector(".nav-links").classList.toggle("show");
+    };
+
+    const form = document.getElementById("joinForm");
+    const status = document.getElementById("status");
+    const clubInput = document.getElementById("clubInput");
+
+    // Auto-fill club name from URL
+    const params = new URLSearchParams(window.location.search);
+    clubInput.value = params.get("club") || "General Club Signup";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: form[0].value,
+        email: form[1].value,
+        grade: form[2].value,
+        club: clubInput.value,
+        message: form[4].value
+      };
+
+      try {
+        const res = await fetch("http://localhost:5000/api/join", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          status.textContent = "✅ Application submitted successfully!";
+          status.style.color = "green";
+          form.reset();
+          clubInput.value = data.club;
+        } else {
+          throw new Error();
+        }
+      } catch {
+        status.textContent = "❌ Submission failed. Please try again.";
+        status.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+</html>
