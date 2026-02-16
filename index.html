@@ -229,19 +229,47 @@ document.getElementById("hamburger").onclick = () => {
 };
 
 
-  
-  const popup = document.getElementById("joinPopup");
-  const closeBtn = document.getElementById("closePopup");
 
-  // Show popup only if not dismissed
-  if (localStorage.getItem("popupDismissed") === "true") {
-    popup.style.display = "none";
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("joinPopup");
+    const closeBtn = document.getElementById("closePopup");
+    const resetBtn = document.getElementById("resetPopup");
 
-  closeBtn.onclick = () => {
-    popup.style.display = "none";
-    localStorage.setItem("popupDismissed", "true");
-  };
+    // Safety checks (prevents silent failure)
+    if (!popup || !closeBtn) return;
+
+    // Show popup only if not dismissed
+    const dismissed = localStorage.getItem("popupDismissed") === "true";
+    if (!dismissed) {
+      popup.classList.add("is-open");
+      popup.setAttribute("aria-hidden", "false");
+    }
+
+    function closePopup() {
+      popup.classList.remove("is-open");
+      popup.setAttribute("aria-hidden", "true");
+      localStorage.setItem("popupDismissed", "true");
+    }
+
+    // Close button (click + touch)
+    closeBtn.addEventListener("click", closePopup);
+    closeBtn.addEventListener("touchstart", (e) => { e.preventDefault(); closePopup(); }, { passive: false });
+
+    // Close when clicking outside the card
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) closePopup();
+    });
+
+    // Debug / reset button (remove later)
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        localStorage.removeItem("popupDismissed");
+        popup.classList.add("is-open");
+        popup.setAttribute("aria-hidden", "false");
+      });
+    }
+  });
+
 
 
  
@@ -270,6 +298,7 @@ document.getElementById("hamburger").onclick = () => {
   </div>
 </div>
 </html>
+
 
 
 
