@@ -583,4 +583,82 @@ a {
   }
 }
 
+/* POPUP OVERLAY */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* POPUP CARD */
+.popup-card {
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  padding: 28px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  animation: popupFade 0.35s ease;
+  position: relative;
+}
+
+.popup-card h2 {
+  margin-top: 0;
+  color: #080f5b;
+}
+
+.popup-card p {
+  color: #374151;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.popup-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #080f5b, #6cb4ee);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* CLOSE BUTTON */
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* ANIMATION */
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .popup-card {
+    padding: 22px;
+  }
+}
+
+
 
