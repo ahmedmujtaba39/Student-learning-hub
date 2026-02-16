@@ -189,7 +189,20 @@
 
     <div class="events-footer">
         <a href="competitions.html" class="events-all">SEE ALL EVENTS →</a>
-    </div>
+    </div
+        <!-- JOIN CLUB POPUP -->
+<div id="joinPopup" class="popup-overlay">
+  <div class="popup-card">
+    <button class="popup-close" id="closePopup">×</button>
+    <h2> Join the 2nd Public speaking Debate tournament</h2></h2>
+    <p>
+      Applications for the torunament are now live
+      
+    </p>
+    <a href="publicsignup.html" class="popup-btn">Apply Now</a>
+  </div>
+</div>
+
 
       
 </section>
@@ -214,6 +227,22 @@
 document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
 };
+
+
+    <script>
+  const popup = document.getElementById("joinPopup");
+  const closeBtn = document.getElementById("closePopup");
+
+  // Show popup only if not dismissed
+  if (localStorage.getItem("popupDismissed") === "true") {
+    popup.style.display = "none";
+  }
+
+  closeBtn.onclick = () => {
+    popup.style.display = "none";
+    localStorage.setItem("popupDismissed", "true");
+  };
+</script>
 
  
 
@@ -241,6 +270,7 @@ document.getElementById("hamburger").onclick = () => {
   </div>
 </div>
 </html>
+
 
 
 
