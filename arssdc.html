@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NWIS Excels at ARSSDC | Student Learning Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* HERO */
+    .news-hero {
+      height: 360px;
+      background: linear-gradient(135deg, #080f5b, #4f5bd5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .news-hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .news-hero p {
+      max-width: 750px;
+      opacity: 0.9;
+      font-size: 16px;
+    }
+
+    /* CONTENT */
+    .news-page {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .news-section {
+      margin-bottom: 60px;
+    }
+
+    .news-section h2 {
+      color: #080f5b;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .news-section p {
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: #f7f9ff;
+      border-left: 5px solid #4f5bd5;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    /* VP SECTION */
+    .vp-feature {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      align-items: center;
+    }
+
+    .vp-feature img {
+      width: 100%;
+      border-radius: 14px;
+    }
+
+    .vp-feature h3 {
+      margin: 0;
+      color: #080f5b;
+      font-size: 24px;
+    }
+
+    .vp-feature span {
+      color: #4f5bd5;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .vp-feature p {
+      color: #374151;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      font-weight: 600;
+      color: #080f5b;
+      text-decoration: none;
+    }
+
+    /* FADE */
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease;
+    }
+
+    .fade.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .news-hero h1 {
+        font-size: 32px;
+      }
+
+      .vp-feature {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+
+
+
+    }
+
+
+    .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.04);
+}
+
+/* MODAL */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 12px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+.timeline-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f7f9ff, #eef2ff);
+  text-align: center;
+}
+
+.timeline-section h2 {
+  margin-bottom: 40px;
+  color: #080f5b;
+}
+
+/* WRAPPER */
+.timeline-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* TRACK */
+.timeline-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 60px;
+}
+
+.timeline-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.timeline-card {
+  min-width: 260px;
+  background: white;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-8px);
+}
+
+.timeline-year {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4f5bd5;
+}
+
+.timeline-card h4 {
+  margin: 10px 0;
+  color: #080f5b;
+}
+
+.timeline-card p {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* HIGHLIGHT CARD */
+.timeline-card.highlight {
+  border: 2px solid #4f5bd5;
+  background: linear-gradient(135deg, #eef2ff, #ffffff);
+}
+
+/* BUTTONS */
+.timeline-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #080f5b;
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.timeline-btn.left {
+  left: 10px;
+}
+
+.timeline-btn.right {
+  right: 10px;
+}
+
+/* MOBILE FALLBACK */
+@media (max-width: 768px) {
+  .timeline-track {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .timeline-btn {
+    display: none;
+  }
+}
+.project-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.project-text h2 {
+  color: #080f5b;
+  margin-bottom: 16px;
+}
+
+.project-text p {
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.view-project-btn {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #080f5b, #4f5bd5);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.project-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .project-showcase {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="usman">
+      <h1 class="logo">Student Learning Hub</h1>
+      <img class="nwis" src="nwislogo" alt="School logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="clubs.html">Clubs</a></li>
+      <li><a href="mentorship.html">Peer Help</a></li>
+      <li><a href="competitions.html">Competitions</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="news-hero">
+  <div>
+    <h1>NWIS Excels at ARSSDC</h1>
+    <p>
+      New World International School reaches the semifinals of the
+      Asian Regional Space Settlement Design Competition (ARSSDC),
+      showcasing innovation, teamwork, and academic excellence.
+    </p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="news-page fade">
+
+  <!-- MAIN STORY -->
+  <div class="news-section">
+    <h2>Outstanding Achievement at ARSSDC</h2>
+    <p>
+      New World International School (NWIS) proudly represented the region
+      at the <strong>Asian Regional Space Settlement Design Competition (ARSSDC)</strong>
+      held in Bangkok, Thailand. Competing against top schools from across Asia,
+      NWIS senior school students demonstrated exceptional problem-solving,
+      engineering design, and teamwork skills.
+    </p>
+
+    <p>
+      The team successfully advanced to the <strong>semifinal round</strong>,
+      presenting an innovative space settlement proposal that impressed judges
+      with its technical depth, creativity, and feasibility.
+    </p>
+
+    <section class="news-section">
+  <h2>ARSSDC Competition Highlights</h2>
+
+  <div class="gallery-grid">
+    <img src="arssdc.jpg" alt="ARSSDC Team Work" class="gallery-img">
+    <img src="celebration.jpg" alt="celebration" class="gallery-img">
+    <img src="FIRST.jpg" alt="Awards" class="gallery-img">
+  </div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div class="image-modal" id="imageModal">
+  <span class="close-modal" id="closeModal">&times;</span>
+  <img class="modal-img" id="modalImg">
+</div>
+
+
+    <div class="highlight-box">
+      <strong>Key Highlights:</strong>
+      <ul>
+        <li>Reached ARSSDC Semifinals</li>
+        <li>Competed against leading international schools</li>
+        <li>Demonstrated advanced STEM and leadership skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="project-showcase">
+  <div class="project-text">
+    <h2>Space Settlement Proposal: CASSANDRAS</h2>
+    <p>
+      <strong>CASSANDRAS</strong> was the space settlement concept designed and
+      submitted by New World International School for the Asian Regional Space
+      Settlement Design Competition (ARSSDC).
+    </p>
+    <p>
+      The proposal focused on sustainable living, advanced engineering systems,
+      and long-term human habitation in space. The judges praised the project
+      for its technical depth, creativity, and feasibility.
+    </p>
+
+    <button class="view-project-btn" id="openCassandras">
+      View Full Design
+    </button>
+  </div>
+
+  <div class="project-image">
+    <img
+      src="cassandras.png"
+      alt="CASSANDRAS Space Settlement Design"
+      id="cassandrasThumb"
+    >
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="image-modal" id="cassandrasModal">
+  <span class="close-modal" id="closeCassandras">&times;</span>
+  <img class="modal-img" src="cassandras.png" alt="CASSANDRAS Full View">
+</div>
+
+  <section class="timeline-section">
+  <h2>ARSSDC Competition Timeline</h2>
+
+  <div class="timeline-wrapper">
+    <button class="timeline-btn left" id="scrollLeft">‹</button>
+
+    <div class="timeline-track" id="timelineTrack">
+
+      <div class="timeline-card">
+        <span class="timeline-year">September 2025</span>
+        <h4>Team Formation</h4>
+        <p>NWIS students formed teams and began intensive ARSSDC training.</p>
+      </div>
+
+      <div class="timeline-card">
+        <span class="timeline-year">November 2026</span>
+        <h4>Design Phase</h4>
+        <p>Space settlement concepts, engineering models, and simulations were developed.</p>
+      </div>
+
+      <div class="timeline-card">
+        <span class="timeline-year">January 2026</span>
+        <h4>Regional Competition</h4>
+        <p>NWIS represented the region at ARSSDC in Bangkok, Thailand.</p>
+      </div>
+
+      <div class="timeline-card highlight">
+        <span class="timeline-year">Result</span>
+        <h4>Semifinalists</h4>
+        <p>Advanced to semifinals, competing against top Asian schools.</p>
+      </div>
+
+    </div>
+
+    <button class="timeline-btn right" id="scrollRight">›</button>
+  </div>
+</section>
+
+
+  <!-- STUDENT COUNCIL NOTE -->
+  <div class="news-section">
+    <h2>Student Leadership Recognition</h2>
+    <p>
+      Alongside academic success, NWIS continues to celebrate student leadership.
+      One of the key figures supporting student engagement and outreach is
+      <strong>Ahmed Usman Butt</strong>, who serves as both Head Boy and
+      Vice President of Marketing in the Student Council.
+    </p>
+  </div>
+
+  <!-- VP FEATURE -->
+  <div class="vp-feature">
+    <img src="butt.png" alt="Ahmed Usman Butt">
+
+    <div>
+      <span>Vice President — Marketing</span>
+      <h3>Ahmed Usman Butt</h3>
+
+      <p>
+        As Vice President of Marketing, Ahmed plays a crucial role in promoting
+        student initiatives, competitions, and achievements such as ARSSDC.
+        His efforts ensure that student accomplishments are recognized
+        and celebrated across the school community.
+      </p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+</section>
+
+<footer class="footer">
+  <p>© 2025 Student Learning Hub — Created by Students, For Students</p>
+</footer>
+
+<script>
+  document.getElementById("hamburger").onclick = () => {
+    document.querySelector(".nav-links").classList.toggle("show");
+  };
+
+  window.addEventListener("load", () => {
+    document.querySelector(".fade").classList.add("active");
+  });
+
+  
+  const images = document.querySelectorAll(".gallery-img");
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeModal = document.getElementById("closeModal");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      modal.classList.add("active");
+      modalImg.src = img.src;
+    });
+  });
+
+  closeModal.onclick = () => modal.classList.remove("active");
+
+  modal.onclick = e => {
+    if (e.target === modal) modal.classList.remove("active");
+  };
+  
+  const track = document.getElementById("timelineTrack");
+  const leftBtn = document.getElementById("scrollLeft");
+  const rightBtn = document.getElementById("scrollRight");
+
+  const scrollAmount = 300;
+
+  leftBtn.onclick = () => {
+    track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  };
+
+  rightBtn.onclick = () => {
+    track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
