@@ -207,23 +207,17 @@
     </div
         <!-- JOIN CLUB POPUP -->
 <!-- JOIN CLUB POPUP -->
-<div id="joinPopup" class="popup-overlay" aria-hidden="true">
-  <div class="popup-card" role="dialog" aria-modal="true" aria-label="Club signup popup">
-    <button type="button" class="popup-close" id="closePopup" aria-label="Close popup">×</button>
+<button onclick="openPopup()">Open Popup</button>
 
-    <h2>Sign up for the Debate tournament Now</h2></h2>
-    <p>
-      Applications for the Debate torunament are Now live
-    </p>
-
-    <a href="publicsignup.html" class="popup-btn">Apply Now</a>
-
-    <!-- optional: debugging button (remove later) -->
-    <button type="button" class="popup-reset" id="resetPopup" style="margin-top:12px;background:transparent;border:0;color:#666;cursor:pointer;">
-      Show popup again
-    </button>
+<!-- Popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h2>Ready to publish?</h2>
+    <button onclick="publish()">Publish</button>
+    <button class="close" onclick="closePopup()">Cancel</button>
   </div>
 </div>
+
 
 
       
@@ -294,8 +288,32 @@ document.getElementById("hamburger").onclick = () => {
 
 
 
- 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+    <script>
+    
+ function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function publish() {
+  // Trigger confetti
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  // Optional: close popup after confetti
+  setTimeout(() => {
+    closePopup();
+  }, 1000);
+}
+    </script>
 
     
 </script>
@@ -320,6 +338,7 @@ document.getElementById("hamburger").onclick = () => {
   </div>
 </div>
 </html>
+
 
 
 
