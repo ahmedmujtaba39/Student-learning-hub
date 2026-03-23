@@ -1,0 +1,3 @@
+node_modules/
+stuco-backend/.env
+stuco-backend/service-account.json

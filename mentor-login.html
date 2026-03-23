@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentor Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: linear-gradient(135deg, #080f5b, #3a0ca3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .login-box {
+      width: 360px;
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #6cb4ee;
+      color: #080f5b;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #48cae4;
+    }
+
+    .error-msg {
+      color: #ffb3b3;
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>Mentor Login</h2>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <button id="loginBtn">Login</button>
+  <p class="error-msg" id="loginError"></p>
+</div>
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyCfY56_OCn_mxtHXDNIZC5bnKZKCSj-r7o",
+  authDomain: "student-learning-hub-1ca09.firebaseapp.com",
+  projectId: "student-learning-hub-1ca09",
+  storageBucket: "student-learning-hub-1ca09.appspot.com",
+  messagingSenderId: "20340802436",
+  appId: "1:20340802436:web:d604f4c9f3fb119f56d3d1",
+  measurementId: "G-N4KT84Q6MR"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const loginBtn = document.getElementById("loginBtn");
+  const errorMsg = document.getElementById("loginError");
+
+  loginBtn.addEventListener("click", () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        window.location.href = "mentor-dashboard.html";
+      })
+      .catch((err) => {
+        errorMsg.textContent = err.message;
+      });
+  });
+</script>
+
+</body>
+</html>

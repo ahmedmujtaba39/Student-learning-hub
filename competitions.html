@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NWIS shines at DAMMUN | Student Learning Hub</title>
+  <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+
+  <!-- Same navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="usman">
+        <h1 class="logo">Student Learning Hub</h1>
+        <img class="nwis" src="nwislogo" alt="School logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="mentorship.html">Peer Help</a></li>
+        <li><a href="competitions.html">Competitions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class='hamburger' id='hamburger'>☰</div>
+    </nav>
+  </header>
+
+  <section class="competitions-hero">
+    <h1>Upcoming Competitions & Events</h1>
+    <p>Find opportunities to represent your school, build confidence, and compete with the best.</p>
+
+    <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Search competitions…">
+        <button>🔍</button>
+    </div>
+
+    <div class="filter-row">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">MUN</button>
+        <button class="filter-btn">STEM</button>
+        <button class="filter-btn">Leadership</button>
+        <button class="filter-btn">Online</button>
+        <button class="filter-btn">This Month</button>
+    </div>
+</section>
+
+<!-- FEATURED COMPETITION -->
+<section class="featured-section">
+    <div class="featured-card">
+        <div class="featured-header">★ Featured Competition</div>
+        <div class="featured-body">
+            <p class="featured-date">February 8, 2026</p>
+            <h2> NWIS MUN </h2>
+            <p class="featured-desc">
+                An inter competition bringing together top debaters to challenge their diplomacy, research, and public speaking skills.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoCz4zZPawwfVZpvh7ILQ1hsF8EAvuKwAVSR3Rc85fAIiw9g/viewform?usp=publish-editor"class="register-btn" class="featured-btn">Register Now →</a>
+        </div>
+    </div>
+</section>
+
+<!-- COMPETITIONS GRID -->
+<section class="competitions-grid">
+
+
+
+    <!-- GENMUN -->
+    <div class="comp-card"data-category="mun" 
+     data-difficulty="medium" 
+     data-title="NWISMUN">
+        <img src="main3.jpg" class="comp-img">
+        <div class="comp-body">
+            <h3>NWISMUN</h3>
+            <p>
+  You will be given a standardized speech to read as part of the selection
+  process, so make sure you are ready to show off your public speaking
+  abilities.
+</p>
+
+<p class="comp-desc">
+  <strong>Date:</strong> Wednesday, January 21, 2026<br>
+  <strong>Venue:</strong> School Auditorium<br>
+  <strong>Selection:</strong> 32 delegates will be chosen to participate
+  in the NWIS Model United Nations.
+</p>
+
+            <div class="tags">
+                <span class="tag blue">MUN</span>
+                <span class="tag">Academic</span>
+                <span class="tag">Easy</span>
+            </div>
+
+            <div class="comp-footer">
+                <span class="deadline">Deadline: January 21</span>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoCz4zZPawwfVZpvh7ILQ1hsF8EAvuKwAVSR3Rc85fAIiw9g/viewform?usp=publish-editor"class="register-btn">Register →</a>
+        </div>
+    </div>
+
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".comp-card");
+
+    let activeCategory = "all";
+
+    // =============================
+    // FILTER FUNCTION
+    // =============================
+    function filterCompetitions() {
+        const searchText = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+            const title = card.dataset.title.toLowerCase();
+            const category = card.dataset.category.toLowerCase();
+
+            const matchesSearch = title.includes(searchText);
+            const matchesCategory = (activeCategory === "all") || (category === activeCategory);
+
+            if (matchesSearch && matchesCategory) {
+                card.style.display = "block";
+                card.style.opacity = 1;
+            } else {
+                card.style.opacity = 0;
+                setTimeout(() => (card.style.display = "none"), 200);
+            }
+        });
+    }
+
+    // =============================
+    // SEARCH EVENT
+    // =============================
+    searchInput.addEventListener("input", filterCompetitions);
+
+    // =============================
+    // CATEGORY BUTTONS
+    // =============================
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            // Remove active styling
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            activeCategory = btn.dataset.filter.toLowerCase();
+
+            filterCompetitions();
+        });
+    });
+
+});
+
+document.getElementById("hamburger").onclick = () => {
+  document.querySelector(".nav-links").classList.toggle("show");
+};
+
+
+  
+</script>
+
+
+  <!-- Same footer -->
+  <footer class="footer">
+    <p>© 2025 Student Learning Hub — Created by Students, For Students</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
