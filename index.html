@@ -68,48 +68,64 @@
     </section>
 
 
-<section class="news-section">
+    <section class="news-section">
   <h2 class="news-title">Latest StuCo News</h2>
 
   <div class="news-carousel">
     <button class="news-arrow news-arrow-left">&lt;</button>
 
     <div class="news-track">
+
       <!-- Card 1 -->
       <article class="news-card">
-        <img src="WhatsApp Image 2025-12-07 at 11.17.13 PM.jpeg" alt="News 1" class="news-image">
+        <img src="bestdelegate.png" alt="News 1" class="news-image">
         <div class="news-content">
-          <h3>NWIS shines at DAMMUN</h3>
-        <p> Musa hago wins best delegate</p>
-          <a href="dammun.html" class="news-link">Learn more</a>
+          <h3>NWIS wins 2 Best Delegates at DHAMUN</h3>
+          <p class="news-desc">
+            New World International School proudly participated in the 20th Annual DHAMUN
+            Conference held at ISG American School, Dhahran. Five NWIS delegates represented
+            the school with distinction, earning two prestigious Best Delegate awards.
+          </p>
+          <a href="dhamun.html" class="news-link">Learn more</a>
         </div>
       </article>
 
       <!-- Card 2 -->
       <article class="news-card">
-        <img src="news2.jpg" alt="News 2" class="news-image">
+        <img src="WhatsApp Image 2025-12-07 at 11.17.13 PM.jpeg" alt="News 2" class="news-image">
         <div class="news-content">
-          <h3>StuCo hosts community event</h3>
-          <p>Brief summary of what happened at the event.</p>
-          <a href="#" class="news-link">Learn more</a>
+          <h3>NWIS Shines at DAMMUN</h3>
+          <p class="news-desc">
+            Musa Hago wins Best Delegate at DAMMUN, representing NWIS with excellence.
+          </p>
+          <a href="dammun.html" class="news-link">Learn more</a>
         </div>
       </article>
 
       <!-- Card 3 -->
       <article class="news-card">
-        <img src="news3.jpg" alt="News 3" class="news-image">
+        <img src="WhatsApp Image 2026-02-02 at 8.09.27 AM.jpeg" alt="News 3" class="news-image">
         <div class="news-content">
-          <h3>Leadership conference coming up</h3>
-          <p>Key details about dates, location, and how to join.</p>
-          <a href="#" class="news-link">Learn more</a>
+          <h3>NWIS Excels at ARSSDC</h3>
+          <p class="news-desc">
+            NWIS senior school students reached the semifinals of the Asian Regional Space
+            Settlement Design Competition in Bangkok, Thailand.
+          </p>
+          <a href="arssdc.html" class="news-link">Learn more</a>
         </div>
       </article>
 
-      <!-- Add more cards as needed -->
     </div>
 
     <button class="news-arrow news-arrow-right">&gt;</button>
   </div>
+</section>
+
+
+    
+
+
+
 
 
   <section class="events-section">
@@ -186,8 +202,15 @@
 
     </div>
 
+    <div class="events-footer">
+        <a href="competitions.html" class="events-all">SEE ALL EVENTS →</a>
+    </div
+        <!-- JOIN CLUB POPUP -->
+<!-- JOIN CLUB POPUP -->
+<button onclick="openPopup()">Open Popup</button>
 
-    <div id="popup" class="popup">
+<!-- Popup -->
+<div id="popup" class="popup">
   <div class="popup-content">
     <h2>Ready to publish?</h2>
     <button onclick="publish()">Publish</button>
@@ -195,13 +218,7 @@
   </div>
 </div>
 
-<!-- Confetti library -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>
 
-    <div class="events-footer">
-        <a href="competitions.html" class="events-all">SEE ALL EVENTS →</a>
-    </div>
 
       
 </section>
@@ -227,7 +244,55 @@ document.getElementById("hamburger").onclick = () => {
   document.querySelector(".nav-links").classList.toggle("show");
 };
 
-function openPopup() {
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("joinPopup");
+    const closeBtn = document.getElementById("closePopup");
+    const resetBtn = document.getElementById("resetPopup");
+
+    // Safety checks (prevents silent failure)
+    if (!popup || !closeBtn) return;
+
+    // Show popup only if not dismissed
+    const dismissed = localStorage.getItem("popupDismissed") === "true";
+    if (!dismissed) {
+      popup.classList.add("is-open");
+      popup.setAttribute("aria-hidden", "false");
+    }
+
+    function closePopup() {
+      popup.classList.remove("is-open");
+      popup.setAttribute("aria-hidden", "true");
+      localStorage.setItem("popupDismissed", "true");
+    }
+
+    // Close button (click + touch)
+    closeBtn.addEventListener("click", closePopup);
+    closeBtn.addEventListener("touchstart", (e) => { e.preventDefault(); closePopup(); }, { passive: false });
+
+    // Close when clicking outside the card
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) closePopup();
+    });
+
+    // Debug / reset button (remove later)
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        localStorage.removeItem("popupDismissed");
+        popup.classList.add("is-open");
+        popup.setAttribute("aria-hidden", "false");
+      });
+    }
+  });
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+    
+ function openPopup() {
   document.getElementById("popup").style.display = "flex";
 }
 
@@ -248,10 +313,7 @@ function publish() {
     closePopup();
   }, 1000);
 }
-
-
- 
-
+    </script>
 
     
 </script>
@@ -276,6 +338,21 @@ function publish() {
   </div>
 </div>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

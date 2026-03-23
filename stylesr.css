@@ -302,8 +302,6 @@ a {
 }
 
 
-  MOBILE NAVBAR FIX (ALL-IN-ONE)
-   =============================== */
 
 .hamburger {
   display: none;
@@ -402,6 +400,7 @@ a {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
   border-top: 6px solid #1e3a8a;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin:auto;
 }
 
 .featured-card:hover {
@@ -417,6 +416,8 @@ a {
   object-fit: cover;
   border: 3px solid #e5e7eb;
   flex-shrink: 0;
+  display : block;
+  
 }
 
 /* ================= TEXT ================= */
@@ -487,3 +488,106 @@ a {
 
 
 
+/* ================= RESEARCH DOCUMENTS ================= */
+
+/* ================= DOCUMENTS SECTION ================= */
+.research-documents {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ================= DOCUMENT CARD ================= */
+.research-doc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+/* COVER IMAGE */
+.research-doc img {
+  width: 100%;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+/* ACTION BUTTONS */
+.doc-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.doc-actions a,
+.doc-actions button {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid #b91c1c;
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+.doc-actions a:hover,
+.doc-actions button:hover {
+  opacity: 0.75;
+}
+
+/* ================= PDF MODAL ================= */
+.pdf-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.pdf-box {
+  width: 90%;
+  height: 90%;
+  background: white;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .research-documents {
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .research-doc {
+    width: 90%;
+  }
+}
